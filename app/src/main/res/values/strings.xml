@@ -15,6 +15,16 @@
     <string name="menu_lugar">Lugares</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="msg_nombre">Nombre del Lugar</string>
+    <string name="msg_correo">Correo (elcorreo@xxx.xxx)</string>
+    <string name="msg_telefono">Telefono</string>
+    <string name="msg_web">Sitio Web</string>
+    <string name="msg_AddLugar">Agregar</string>
+    <string name="msg_lugar_added" />
+    <string name="msg_data">Faltan Datos</string>
 
 
 </resources>
