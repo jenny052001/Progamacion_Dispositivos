@@ -22,9 +22,11 @@
     <string name="msg_correo">Correo (elcorreo@xxx.xxx)</string>
     <string name="msg_telefono">Telefono</string>
     <string name="msg_web">Sitio Web</string>
-    <string name="msg_AddLugar">Agregar</string>
+    <string name="bt_AddLugar">Agregar</string>
+    <string name="bt_UpdateLugar">Actualizar Lugar </string>
     <string name="msg_lugar_added" />
     <string name="msg_data">Faltan Datos</string>
+    <string name="msg_lugar_update">Error del Lugar</string>
 
 
 </resources>

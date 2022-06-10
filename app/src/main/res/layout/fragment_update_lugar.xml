@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.lugar.AddLugarFragment">
+    tools:context=".ui.lugar.UpdateLugarFragment">
 
 
     <ScrollView
@@ -50,11 +50,11 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/bt_agregar"
+                android:id="@+id/bt_actualizar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:password="false"
-                android:text="@string/bt_AddLugar" />
+                android:text="@string/bt_UpdateLugar" />
 
         </LinearLayout>
     </ScrollView>
