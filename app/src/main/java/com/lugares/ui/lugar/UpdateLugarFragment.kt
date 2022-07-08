@@ -36,7 +36,7 @@ class UpdateLugarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         lugarViewModel =
-            ViewModelProvider(this).get(LugarViewModel::class.java)
+            ViewModelProvider(this)[LugarViewModel::class.java]
 
         _binding = FragmentUpdateLugarBinding.inflate(inflater, container, false)
 
@@ -68,6 +68,7 @@ class UpdateLugarFragment : Fragment() {
         }
 
     }
+
     private fun verWeb() {
         val recurso = binding.etWeb.text.toString()
         if (recurso.isNotEmpty()) {
@@ -156,7 +157,7 @@ class UpdateLugarFragment : Fragment() {
         val telefono = binding.etTelefono.text.toString()
         val web = binding.etWeb.text.toString()
         if (nombre.isNotEmpty()) {
-            val lugar = Lugar(args.lugar.id,nombre, correo, telefono, web, 0.0, 0.0, 0.0, "", "",)
+            val lugar = Lugar(args.lugar.id,nombre, correo, telefono, web, 0.0, 0.0, 0.0, "", "")
 
             lugarViewModel.updateLugar(lugar)
             Toast.makeText(requireContext(),getString(R.string.msg_lugar_update),Toast.LENGTH_SHORT).show()
