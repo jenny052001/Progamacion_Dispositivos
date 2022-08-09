@@ -46,14 +46,15 @@ class UpdateLugarFragment : Fragment() {
             etCorreo.setText(args.lugar.correo)
             etTelefono.setText(args.lugar.telefono)
             etWeb.setText(args.lugar.Web)
-            binding.tvAltura.text = args.lugar.altura.toString()
-            binding.tvLatitud.text = args.lugar.latitud.toString()
-            binding.tvLongitud.text = args.lugar.longitud.toString()
+            binding.tvAltura.text=args.lugar.altura.toString()
+            binding.tvLatitud.text=args.lugar.latitud.toString()
+            binding.tvLongitud.text=args.lugar.longitud.toString()
 
-            binding.btActualizar.setOnClickListener { UpdateLugar() }
+            binding.btUpdateLugar.setOnClickListener { UpdateLugar() }
+
             binding.btEmail.setOnClickListener { escribirCorreo() }
             binding.btPhone.setOnClickListener { realizarLlamada() }
-            binding.btPhone.setOnClickListener { verWeb() }
+            binding.btWeb.setOnClickListener { verWeb() }
 
 
 

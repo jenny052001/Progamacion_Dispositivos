@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Lugares_1/app/src/main/res/drawable-v24/ic_rotate_r.xml" value="0.132" />
         <entry key="..\:/Lugares_1/app/src/main/res/drawable/ic_baseline_delete_outline_24.xml" value="0.1" />
         <entry key="..\:/Lugares_1/app/src/main/res/drawable/ic_dd.xml" value="0.1275" />
         <entry key="..\:/Lugares_1/app/src/main/res/drawable/ic_delete.xml" value="0.1275" />
@@ -13,7 +14,7 @@
         <entry key="..\:/Lugares_1/app/src/main/res/layout/activity_principal.xml" value="0.20521590423257802" />
         <entry key="..\:/Lugares_1/app/src/main/res/layout/app_bar_principal.xml" value="0.20521590423257802" />
         <entry key="..\:/Lugares_1/app/src/main/res/layout/content_principal.xml" value="0.20521590423257802" />
-        <entry key="..\:/Lugares_1/app/src/main/res/layout/fragment_add_lugar.xml" value="0.20521590423257802" />
+        <entry key="..\:/Lugares_1/app/src/main/res/layout/fragment_add_lugar.xml" value="1.0" />
         <entry key="..\:/Lugares_1/app/src/main/res/layout/fragment_gallery.xml" value="0.20521590423257802" />
         <entry key="..\:/Lugares_1/app/src/main/res/layout/fragment_lugar.xml" value="0.4" />
         <entry key="..\:/Lugares_1/app/src/main/res/layout/fragment_slideshow.xml" value="0.20521590423257802" />
