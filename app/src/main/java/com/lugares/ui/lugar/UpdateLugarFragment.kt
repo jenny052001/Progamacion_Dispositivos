@@ -90,6 +90,8 @@ class UpdateLugarFragment : Fragment() {
             binding.btEmail.setOnClickListener { escribirCorreo() }
             binding.btPhone.setOnClickListener { realizarLlamada() }
             binding.btWeb.setOnClickListener { verWeb() }
+            binding.btLocation.setOnClickListener{ verMapa()}
+            binding.btWhatsapp.setOnClickListener{enviarWhatsapp()}
 
 
 
@@ -102,6 +104,39 @@ class UpdateLugarFragment : Fragment() {
         }
 
     }
+
+    private fun enviarWhatsapp() {
+        val telefono = binding.etTelefono.text
+        if (telefono.isNotEmpty()) {
+           val intent = Intent(Intent.ACTION_VIEW)
+            val uri = "whatsapp: //send?phone=506$telefono&text="
+            getString(R.string.msg_saludos)
+            intent.setPackage("com.whatsapp")
+            intent.data=Uri.parse(uri)
+            startActivity(intent)
+
+        }else {
+            Toast.makeText(
+                requireContext(), getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    private fun verMapa() {
+        val latitud = binding.tvLatitud.text.toString().toDouble()
+        val longitud = binding.tvLongitud.text.toString().toDouble()
+        if (latitud.isFinite() && longitud.isFinite()) {
+            val location = Uri.parse("geo:$latitud,$longitud?z18")
+            val intent = Intent(Intent.ACTION_VIEW, location)
+            startActivity(intent)
+        }else {
+            Toast.makeText(
+                requireContext(), getString(R.string.msg_datos),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun verWeb() {
         val recurso = binding.etWeb.text.toString()

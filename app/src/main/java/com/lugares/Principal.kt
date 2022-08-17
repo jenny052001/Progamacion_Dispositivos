@@ -58,13 +58,13 @@ class Principal : AppCompatActivity() {
         tvCorreo.text = usuario?.email
         val foto = usuario?.photoUrl.toString()
         if (foto.isNotEmpty()) {
-            Glide.with(this)
+            val into = Glide.with(this)
                 .load(foto)
                 .circleCrop()
                 .into(imagen)
         }
 
-    }
+        }
 
         //Recorte 011: exit
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

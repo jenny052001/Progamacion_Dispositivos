@@ -1,5 +1,4 @@
 <resources>
-    <string name="app-name" translatable="false">Lugares</string>
     <string name="default_web_client_idg" translatable="false">1023182530299-rmhe1c37te4bkoljka9mkkjrftqgv7go.apps.googleusercontent.com</string>
     <string name="tv_correo">Correo</string>
     <string name="tv_clave">Contraseña</string>
@@ -13,7 +12,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_lugar">Lugares</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_gallery">Mapa</string>
     <string name="msg_nombre">Nombre del Lugar</string>
     <string name="msg_correo">Correo (elcorreo@xxx.xxx)</string>
     <string name="msg_telefono">Telefono</string>
