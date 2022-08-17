@@ -51,7 +51,7 @@
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/UpdateLugar"
+            android:id="@+id/btUpdateLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bt_UpdateLugar" />

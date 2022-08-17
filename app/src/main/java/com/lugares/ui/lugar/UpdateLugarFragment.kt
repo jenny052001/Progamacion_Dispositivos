@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.lugares.R
 import com.lugares.databinding.FragmentUpdateLugarBinding
 import com.lugares.model.Lugar
@@ -30,6 +32,10 @@ class UpdateLugarFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var lugarViewModel: LugarViewModel
 
+
+    // objeto para escuchar audio
+    private lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,14 +48,43 @@ class UpdateLugarFragment : Fragment() {
 
         // Coloco la info del lugar en los campos del fragmento para modificar.
         binding.run {
-            etNombre.setText(args.lugar.nombre)
-            etCorreo.setText(args.lugar.correo)
-            etTelefono.setText(args.lugar.telefono)
-            etWeb.setText(args.lugar.Web)
+            binding.etNombre.setText(args.lugar.nombre)
+            binding.etCorreo.setText(args.lugar.correo)
+            binding.etTelefono.setText(args.lugar.telefono)
+            binding.etWeb.setText(args.lugar.Web)
             binding.tvAltura.text=args.lugar.altura.toString()
             binding.tvLatitud.text=args.lugar.latitud.toString()
             binding.tvLongitud.text=args.lugar.longitud.toString()
 
+            // se trabaja en el tema del audio
+            if(args.lugar.rutaAudio?.isNotEmpty()==true){
+                // existe una ruta de audio
+                mediaPlayer = MediaPlayer()
+                mediaPlayer.setDataSource(args.lugar.rutaAudio)
+                mediaPlayer.prepare()
+                binding.btPlay.isEnabled=true //boton para escuchar el audio
+
+
+            }else{ // no hay ruta deaudio, esta vacía
+                binding.btPlay.isEnabled=false //apagar el boton
+
+            }
+
+            // se trabaja en el tema de la imagen
+            if(args.lugar.rutaImagen?.isNotEmpty()==true){
+                // existe una ruta de una imagen
+                Glide.with(requireContext())
+                    .load(args.lugar.rutaImagen)
+                    .fitCenter()// la imagen queda en el centro
+                    .into(binding.imagen)
+
+
+            }else{ // no hay ruta deaudio, esta vacía
+                binding.btPlay.isEnabled=false //apagar el boton
+
+            }
+
+            binding.btPlay.setOnClickListener{mediaPlayer.start() } // hace que suene el audio
             binding.btUpdateLugar.setOnClickListener { UpdateLugar() }
 
             binding.btEmail.setOnClickListener { escribirCorreo() }
@@ -58,9 +93,7 @@ class UpdateLugarFragment : Fragment() {
 
 
 
-            binding.btActualizar.setOnClickListener {
-                UpdateLugar()
-            }
+
             // Se indica que esta pantalla tiene un menu personalizado
             setHasOptionsMenu(true)
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lugares_1</string>
+    <string name="app-name" translatable="false">Lugares</string>
     <string name="tv_correo">Correo</string>
     <string name="tv_clave">Contraseña</string>
     <string name="msg_fallo_registro">Fallo la creacion del usuario</string>
@@ -11,19 +11,14 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_lugar">Lugares</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="msg_nombre">Nombre del Lugar</string>
     <string name="msg_correo">Correo (elcorreo@xxx.xxx)</string>
     <string name="msg_telefono">Telefono</string>
     <string name="msg_web">Sitio Web</string>
     <string name="bt_AddLugar">Agregar Lugar</string>
-    <string name="bt_UpdateLugar">Actualizar Lugar </string>
+    <string name="bt_UpdateLugar">Actualizar Lugar</string>
     <string name="msg_lugar_added" />
     <string name="msg_data">Faltan Datos</string>
     <string name="msg_lugar_update">Error del Lugar</string>
@@ -31,10 +26,6 @@
     <string name="seguroBorrar">¿Esta seguro de borrar lo seleccionado?</string>
     <string name="si">Si</string>
     <string name="no">No</string>
-
-
-
-
     <string name="msg_enviar_correo">Enviar correo electrónico</string>
     <string name="msg_phone_call">Realizar llamada telefónica</string>
     <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
@@ -47,7 +38,6 @@
     <string name="msg_mensaje_correo">Le escribo este correo para</string>
     <string name="msg_datos">Faltan datos</string>
     <string name="error">Error</string>
-
     <string name="msgEscucharAudio">Escuchar nota de audio</string>
     <string name="msg_imagen">Imagen del lugar</string>
     <string name="graba_pausa">Graba o pausa grabación</string>
@@ -62,7 +52,5 @@
     <string name="msg_detener_audio">Nota de audio detenida</string>
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
-    <string name="todo">por definir</string>
-
-
+    <string name="todo">Por definir</string>
 </resources>

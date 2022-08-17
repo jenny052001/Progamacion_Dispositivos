@@ -57,35 +57,38 @@ class AddLugarFragment : Fragment() {
         _binding = FragmentAddLugarBinding.inflate(inflater, container, false)
 
         binding.btAgregar.setOnClickListener {
-            binding.progressBar.visibility=ProgressBar.VISIBLE
+            binding.progressBar.visibility = ProgressBar.VISIBLE
             binding.msgMensaje.text = getString(R.string.msg_subiendo_audio)
-            binding.msgMensaje.visibility=TextView.VISIBLE
+            binding.msgMensaje.visibility = TextView.VISIBLE
             subeAudio()
         }
         ubicaGPS() //activa los permisos para el GPS y muestra la info
 
-        audioUtiles= AudioUtiles(
+        audioUtiles = AudioUtiles(
             requireActivity(),
             requireContext(),
             binding.btAccion,
             binding.btPlay,
             binding.btDelete,
             getString(R.string.msg_graba_audio),
-        getString(R.string.msg_detener_audio))
+            getString(R.string.msg_detener_audio)
+        )
 
         tomarFotoActivity = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) {
+            ActivityResultContracts.StartActivityForResult()
+        ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 imagenUtiles.actualizaFoto()
             }
         }
-        imagenUtiles= ImagenUtiles(
+        imagenUtiles = ImagenUtiles(
             requireContext(),
             binding.btPhoto,
             binding.btRotaL,
             binding.btRotaR,
             binding.imagen,
-            tomarFotoActivity)
+            tomarFotoActivity
+        )
 
 
 
@@ -95,7 +98,7 @@ class AddLugarFragment : Fragment() {
 
     private fun subeAudio() {
         val audioFile = audioUtiles.audioFile
-        if (audioFile.exists() && audioFile.isFile && audioFile.canRead()) {
+        if (audioFile != null && audioFile.exists() && audioFile.isFile && audioFile.canRead()) { // poder subir un lugar sin audio
             // si entra al if, podemis subir el audio a la nube
             var usuario =
                 Firebase.auth.currentUser?.email //obtener el correo del usuario autenticado
@@ -111,7 +114,7 @@ class AddLugarFragment : Fragment() {
                         subeImagen(rutaAudio)
                     }
                 }
-                .addOnFailureListener{
+                .addOnFailureListener {
                     subeImagen("")
                 }
 
@@ -120,35 +123,42 @@ class AddLugarFragment : Fragment() {
         }
 
     }
+
     private fun subeImagen(rutaAudio: String) {
         binding.msgMensaje.text = getString(R.string.msg_subiendo_imagen)
+        if (imagenUtiles.imagenFile != null) { //  poder subir un lugar sin imagen
 
-        val imagenFile = imagenUtiles.imagenFile
-        if (imagenFile.exists() && imagenFile.isFile && imagenFile.canRead()) {
-            // si entra al if, podemis subir la imagen a la nube
-            var usuario =
-                Firebase.auth.currentUser?.email //obtener el correo del usuario autenticado
-            val rutaNube = "lugaresApp/${usuario}/imagenes/${imagenFile.name}"
-            val rutaLocal = Uri.fromFile(imagenFile)
+            val imagenFile = imagenUtiles.imagenFile
+            if (imagenFile != null && imagenFile.exists() && imagenFile.isFile && imagenFile.canRead()) {
+                // si entra al if, podemis subir la imagen a la nube
+                var usuario =
+                    Firebase.auth.currentUser?.email //obtener el correo del usuario autenticado
+                val rutaNube = "lugaresApp/${usuario}/imagenes/${imagenFile.name}"
+                val rutaLocal = Uri.fromFile(imagenFile)
 
-            var reference: StorageReference = Firebase.storage.reference.child(rutaNube)
+                var reference: StorageReference = Firebase.storage.reference.child(rutaNube)
 
-            reference.putFile(rutaLocal) // se toma el archivo que esta en la ruta y se sube al storage
-                .addOnSuccessListener {
-                    reference.downloadUrl.addOnSuccessListener {  // se pregunta para descargar el URL
-                        val rutaImagen = it.toString()
-                        addLugar(rutaAudio,rutaImagen) // se graba la info del lugar
+                reference.putFile(rutaLocal) // se toma el archivo que esta en la ruta y se sube al storage
+                    .addOnSuccessListener {
+                        reference.downloadUrl.addOnSuccessListener {  // se pregunta para descargar el URL
+                            val rutaImagen = it.toString()
+                            addLugar(rutaAudio, rutaImagen) // se graba la info del lugar
+                        }
                     }
-                }
-                .addOnFailureListener{
-                    addLugar(rutaAudio,"")
-                }
+                    .addOnFailureListener {
+                        addLugar(rutaAudio, "")
+                    }
 
-        } else {// No hya imagen, no se sube
-            addLugar(rutaAudio,"")
+            } else {// No hya imagen, no se sube
+                addLugar(rutaAudio, "")
+            }
+
+        } else {
+
+            addLugar(rutaAudio, "")
         }
-
     }
+
     private fun ubicaGPS() {
         val ubicacion: FusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
