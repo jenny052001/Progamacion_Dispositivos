@@ -94,10 +94,11 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
             ActivityCompat.requestPermissions(requireActivity(),
                 arrayOf(
                     Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION),105)
+                    Manifest.permission.ACCESS_FINE_LOCATION),
+                105)
         } else {  //Si se tienen los permisos
-                var latitud = 0.0
-                var longitud = 0.0
+                var latitud = 9.97
+                var longitud = -84.00
                 ubicacion.lastLocation.addOnSuccessListener { location: Location? ->
 
                 if (location!=null) {
@@ -105,12 +106,12 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                     longitud=location.longitude
                 } else {
                     var latitud = 9.97
-                    var longitud = 84.00
+                    var longitud = -84.00
                 }
             }
                     .addOnFailureListener{
-                        latitud=0.97
-                        longitud=84.00
+                        latitud= 9.97
+                        longitud= -84.00
                     }
             val camara = CameraUpdateFactory.newLatLngZoom(
                 com.google.android.gms.maps.model.LatLng(latitud,longitud),15f)
